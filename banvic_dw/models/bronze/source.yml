@@ -1,0 +1,15 @@
+version: 2
+sources:
+  - name: bv
+    schema: banvic_dl
+    tables: 
+      - name: agencias
+      - name: clientes
+      - name: colaborador_agencia
+      - name: colaboradores
+      - name: contas
+      - name: data
+      - name: propostas_credito
+      - name: transacoes
+      - name: ipca_historico
+      - name: selic_historico
