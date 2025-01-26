@@ -1,0 +1,89 @@
+version: 2
+
+models: 
+  - name: silver_agencias
+    description: "Tabela de agências."
+    columns:
+      - name: cod_agencia
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+
+  - name: silver_clientes
+    description: "Tabela de clientes."
+    columns:
+      - name: cod_cliente
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null 
+
+  - name: silver_colaborador_agencia
+    description: "Tabela que liga cada colaborador a sua agência."
+    columns:
+      - name: cod_colaborador
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null 
+      - name: cod_agencia
+        description: "Chave estrangeira da tabela de Agências."
+        tests: 
+          - not_null
+
+  - name: silver_colaboradores
+    description: "Tabela de colaboradores."
+    columns:
+      - name: cod_colaborador
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null 
+
+  - name: silver_contas
+    description: "Tabela que registra as contas de cada cliente."
+    columns:
+      - name: num_conta
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null 
+      - name: cod_cliente
+        description: "Chave estrangeira da tabela de clientes."
+        tests:
+          - not_null
+      - name: cod_agencia
+        description: "Chave estrangeira da tabela de agências."
+        tests:
+          - not_null
+      - name: cod_colaborador
+        description: "Chave estrangeira da tabela de colaboradores."
+        tests:
+          - not_null
+
+  - name: silver_propostas_credito
+    description: "Tabela que registra as propostas de crédito realizadas pelo BanVic."
+    columns:
+      - name: cod_proposta
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+      - name: cod_cliente
+        description: "Chave estrangeira da tabela de clientes."
+        tests: 
+          - not_null
+      - name: cod_colaborador
+        description: "Chave estrangeira da tabela de colaboradores."
+        tests: 
+          - not_null
+
+  - name: silver_transacoes
+    description: "Tabela que registra as transações realizadas pelos clientes do BanVic."
+    columns:
+      - name: cod_transacao
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
