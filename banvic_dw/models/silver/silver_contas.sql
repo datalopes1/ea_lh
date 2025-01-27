@@ -9,9 +9,9 @@ SELECT
     , saldo_total
     , saldo_disponivel
     , data_ultimo_lancamento
-    , DATE_DIFF(DATE '2023-01-31', SAFE_CAST(data_abertura AS DATE), YEAR) AS tempo_relacionamento
+    , DATE_DIFF(DATE '2023-01-16', SAFE_CAST(data_abertura AS DATE), YEAR) AS tempo_relacionamento
     , CASE
-        WHEN DATE_DIFF(DATE '2023-01-31', CAST(data_ultimo_lancamento AS DATE), DAY) > 180 THEN 'Não'
+        WHEN DATE_DIFF(DATE '2023-01-16', CAST(data_ultimo_lancamento AS DATE), DAY) > 180 THEN 'Não'
         ELSE 'Sim'
       END AS cliente_ativo
   FROM {{ref('bronze_contas')}}
