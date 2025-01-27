@@ -42,6 +42,6 @@ models:
       +schema: silver
     gold: 
       comercial:
-        +enabled: false
+        +enabled: true
         +materialized: table
-        +schema: gold
+        +schema: com

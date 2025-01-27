@@ -1,0 +1,67 @@
+version: 2
+
+models: 
+  - name: dim_agencias
+    description: "Dimensão de agências"
+    columns:
+      - name: cod_agencia
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+
+  - name: dim_colaboradores
+    description: "Dimensão de colaboradores"
+    columns:
+      - name: cod_colaborador
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+      - name: cod_agencia
+        description: "Chave estrangeira para a tabela de agências."
+        tests: 
+          - not_null
+
+  - name: dim_conta_cliente
+    description: "Dimensão de clientes e suas contas"
+    columns:
+      - name: num_conta
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+      - name: cod_colaborador
+        description: "Chave estrangeira para a tabela de colaboradores."
+        tests: 
+          - not_null
+
+  - name: fact_propostas_credito
+    description: "Fato que registra as propostas de crédito."
+    columns:
+      - name: cod_proposta
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+      - name: num_conta
+        description: "Chave estrangeira para a tabela de conta cliente."
+        tests: 
+          - not_null
+      - name: cod_colaborador
+        description: "Chave estrangeira para a tabela de conta colaboradores."
+        tests: 
+          - not_null
+
+  - name: fact_transacoes
+    description: "Fato que registra as transações bancárias realizadas pelos clientes."
+    columns:
+      - name: cod_transacao
+        description: "Chave natural e primária da tabela."
+        tests: 
+          - unique
+          - not_null
+      - name: num_conta
+        description: "Chave estrangeira para a tabela de conta cliente."
+        tests: 
+          - not_null
